@@ -1,0 +1,48 @@
+networks:
+  net:
+    driver: bridge
+
+services:
+  pg:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=saas-rbac
+
+  chromadb:
+      image: chromadb/chroma:latest
+      volumes:
+        - ./chromadb:/chroma/chroma
+      environment:
+        - IS_PERSISTENT=TRUE
+        - PERSIST_DIRECTORY=/chroma/chroma # this is the default path, change it as needed
+        - ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY:-TRUE}
+      ports:
+        - 8000:8000
+      networks:
+        - net
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    restart: always
+    container_name: qdrant
+    ports:
+      - 6333:6333
+      - 6334:6334
+    expose:
+      - 6333
+      - 6334
+      - 6335
+    configs:
+      - source: qdrant_config
+        target: /qdrant/config/production.yaml
+    volumes:
+      - ./qdrant_data:/qdrant/storage 
+
+configs:
+  qdrant_config:
+    content: |
+      log_level: INFO   

@@ -1,0 +1,23 @@
+{
+  "name": "@crono/env",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "devDependencies": {
+    "@crono/eslint-config": "workspace:*",
+    "@crono/prettier-config": "workspace:*",
+    "@crono/ts-config": "workspace:*",
+    "@types/node": "^22.0.2"
+  },
+  "prettier": "@crono/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@crono/eslint-config/library"
+    ]
+  },
+  "dependencies": {
+    "@t3-oss/env-nextjs": "^0.11.0",
+    "zod": "^3.23.8"
+  }
+}

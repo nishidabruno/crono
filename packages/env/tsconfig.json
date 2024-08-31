@@ -1,0 +1,4 @@
+{
+  "extends": "@crono/ts-config/library.json",
+  "include": ["index.ts"]
+}

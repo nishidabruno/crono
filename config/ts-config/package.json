@@ -1,0 +1,7 @@
+{
+  "name": "@crono/ts-config",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "files": ["library.json", "node.json", "next.json"]
+}
