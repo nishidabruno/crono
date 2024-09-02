@@ -11,29 +11,29 @@ export function Calendar() {
     <div className="">
       <header className="flex items-center justify-between">
         <div className="p-4">
-          <span className="text-xl">2024年8月</span>
+          <span className="text-xl">September 2024</span>
         </div>
         <div className="flex gap-2">
           <div className="flex h-9 items-center gap-2 rounded-md bg-muted p-2 text-sm">
             <div>
-              <span className="rounded-md p-1 px-3">日</span>
+              <span className="rounded-md p-1 px-3">Day</span>
             </div>
             <div>
               <span className="rounded-md bg-muted-foreground p-1 px-3 font-medium text-muted">
-                週
+                Week
               </span>
             </div>
             <div>
-              <span className="rounded-md p-1 px-3">月</span>
+              <span className="rounded-md p-1 px-3">Month</span>
             </div>
           </div>
           <Button size="sm" variant="secondary">
             <Filter className="mr-2 size-4" />
-            フィルター
+            Filter
           </Button>
           <Button size="sm">
             <CirclePlus className="mr-2 size-4" />
-            新規追加
+            New
           </Button>
         </div>
       </header>

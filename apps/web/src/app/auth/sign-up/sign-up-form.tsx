@@ -32,14 +32,14 @@ export default function SignUpForm() {
         {success === false && message && (
           <Alert variant="destructive">
             <AlertTriangle className="size-4" />
-            <AlertTitle>ログインできませんでした。</AlertTitle>
+            <AlertTitle>Could not login.</AlertTitle>
             <AlertDescription>
               <p>{message}</p>
             </AlertDescription>
           </Alert>
         )}
         <div className="space-y-1">
-          <Label>姓と名</Label>
+          <Label>Name</Label>
           <Input name="name" id="name" />
 
           {errors?.name && (
@@ -49,7 +49,7 @@ export default function SignUpForm() {
           )}
         </div>
         <div className="space-y-1">
-          <Label>メールアドレス</Label>
+          <Label>E-mail</Label>
           <Input name="email" type="email" id="email" />
 
           {errors?.email && (
@@ -60,7 +60,7 @@ export default function SignUpForm() {
         </div>
 
         <div className="space-y-1">
-          <Label>パスワード</Label>
+          <Label>Password</Label>
           <Input name="password" type="password" id="password" />
 
           {errors?.password && (
@@ -71,7 +71,7 @@ export default function SignUpForm() {
         </div>
 
         <div className="space-y-1">
-          <Label>パスワード確認</Label>
+          <Label>Confirm password</Label>
           <Input
             name="password_confirmation"
             type="password"
@@ -89,12 +89,12 @@ export default function SignUpForm() {
           {isPending ? (
             <Loader2 className="size-4 animate-spin" />
           ) : (
-            'アカウント作成'
+            'Create account'
           )}
         </Button>
 
         <Button variant="link" type="submit" className="w-full" size="sm">
-          <Link href="/auth/sign-in">既にアカウントをお持ちの方はこちら</Link>
+          <Link href="/auth/sign-in">Sign in</Link>
         </Button>
       </form>
 
@@ -103,7 +103,7 @@ export default function SignUpForm() {
       <form action={signInWithGoogle}>
         <Button type="submit" variant="outline" className="w-full">
           <Image src={googleIcon} className="mr-2 size-4" alt="" />
-          Google アカウントを作成
+          Sign up
         </Button>
       </form>
     </div>

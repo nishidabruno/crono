@@ -14,9 +14,9 @@ export function ProjectCard() {
         </div>
 
         <div className="flex flex-col">
-          <span className="">デザイン ショット</span>
+          <span className="">Design shot</span>
           <span className="text-sm text-muted-foreground">
-            最終更新: 今日、11:43
+            Last updated: Today, 11:43
           </span>
         </div>
       </div>

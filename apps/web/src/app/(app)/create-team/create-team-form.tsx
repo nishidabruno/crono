@@ -22,7 +22,7 @@ export function CreateTeamForm() {
       {success === false && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
-          <AlertTitle>ログインできませんでした。</AlertTitle>
+          <AlertTitle>Could not create a new team.</AlertTitle>
           <AlertDescription>
             <p>{message}</p>
           </AlertDescription>
@@ -39,7 +39,7 @@ export function CreateTeamForm() {
         </Alert>
       )}
       <div className="space-y-1">
-        <Label>チーム名</Label>
+        <Label>Team name</Label>
         <Input name="teamName" id="teamName" />
 
         {errors?.teamName && (
@@ -50,7 +50,7 @@ export function CreateTeamForm() {
       </div>
 
       <Button type="submit" className="w-full" disabled={isPending}>
-        {isPending ? <Loader2 className="size-4 animate-spin" /> : 'チーム作成'}
+        {isPending ? <Loader2 className="size-4 animate-spin" /> : 'Create'}
       </Button>
     </form>
   )

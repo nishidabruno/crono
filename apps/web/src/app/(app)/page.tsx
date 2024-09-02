@@ -8,16 +8,15 @@ export default async function Home() {
       <Sidebar />
 
       <main className="m-4 flex flex-col">
-        <h2 className="text-xl font-medium">プロジェクト</h2>
+        <h2 className="text-xl font-medium">Projects</h2>
         <div className="mt-4 flex gap-2">
           <ProjectCard />
           <ProjectCard />
           <ProjectCard />
           <ProjectCard />
           <ProjectCard />
-          <ProjectCard />
         </div>
-        <h2 className="mt-4 text-xl font-medium">カレンダー</h2>
+        <h2 className="mt-4 text-xl font-medium">Calendar</h2>
         <Calendar />
       </main>
     </>

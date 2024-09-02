@@ -43,10 +43,11 @@ export async function UserSettings() {
           className="w-[200px]"
         >
           <DropdownMenuGroup className="flex justify-start">
-            <DropdownMenuItem asChild>
+            {/* TODO: enable again after making theme switch work */}
+            <DropdownMenuItem asChild disabled={true}>
               <div className="w-full">
                 <ThemeSwitcher />
-                テーマ スイッチ
+                Switch theme
               </div>
             </DropdownMenuItem>
           </DropdownMenuGroup>
@@ -55,7 +56,7 @@ export async function UserSettings() {
           <DropdownMenuItem asChild>
             <a href="/api/auth/sign-out">
               <LogOut className="mr-2 size-4" />
-              ログアウト
+              Logout
             </a>
           </DropdownMenuItem>
         </DropdownMenuContent>

@@ -1,7 +1,14 @@
 import './globals.css'
 
 import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
+
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Crono',
@@ -14,7 +21,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={inter.className}>
       <body>
         <ThemeProvider
           attribute="class"

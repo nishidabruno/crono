@@ -32,7 +32,7 @@ export function SignInForm() {
         {success === false && message && (
           <Alert variant="destructive">
             <AlertTriangle className="size-4" />
-            <AlertTitle>ログインできませんでした。</AlertTitle>
+            <AlertTitle>Could not login.</AlertTitle>
             <AlertDescription>
               <p>{message}</p>
             </AlertDescription>
@@ -40,7 +40,7 @@ export function SignInForm() {
         )}
 
         <div className="space-y-1">
-          <Label>メールアドレス</Label>
+          <Label>E-mail</Label>
           <Input name="email" type="text" id="email" />
 
           {errors?.email && (
@@ -51,7 +51,7 @@ export function SignInForm() {
         </div>
 
         <div className="space-y-1">
-          <Label>パスワード</Label>
+          <Label>Password</Label>
           <Input name="password" type="password" id="password" />
 
           {errors?.password && (
@@ -64,16 +64,16 @@ export function SignInForm() {
             href="/auth/forgot-password"
             className="text-xs font-medium text-foreground hover:underline"
           >
-            パスワードをお忘れ場合
+            Forgot password?
           </Link>
         </div>
 
         <Button type="submit" className="w-full" disabled={isPending}>
-          {isPending ? <Loader2 className="size-4 animate-spin" /> : 'ログイン'}
+          {isPending ? <Loader2 className="size-4 animate-spin" /> : 'Login'}
         </Button>
 
         <Button variant="link" className="w-full" size="sm">
-          <Link href="/auth/sign-up">アカウント作成</Link>
+          <Link href="/auth/sign-up">Create account</Link>
         </Button>
       </form>
       <Separator />
@@ -81,7 +81,7 @@ export function SignInForm() {
       <form action={signInWithGoogle}>
         <Button type="submit" variant="outline" className="w-full">
           <Image src={googleIcon} className="mr-2 size-4" alt="" />
-          Google アカウントでログイン
+          Sign in
         </Button>
       </form>
     </div>

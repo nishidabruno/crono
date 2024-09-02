@@ -29,7 +29,7 @@ export async function Sidebar() {
       {/* Main menu */}
       <div className="mt-4">
         <span className="text-xs font-medium tracking-wider text-muted-foreground">
-          メニュー
+          Menu
         </span>
 
         <div className="mt-4 flex flex-col gap-1 px-3">
@@ -41,7 +41,7 @@ export async function Sidebar() {
           >
             <Link href="/">
               <LayoutDashboard className="size-5" />
-              ダッシュボード
+              Overview
             </Link>
           </Button>
           <Button
@@ -52,7 +52,7 @@ export async function Sidebar() {
           >
             <Link href="/calendar">
               <Calendar className="size-5" />
-              カレンダー
+              Calendar
             </Link>
           </Button>
           <Button
@@ -63,7 +63,7 @@ export async function Sidebar() {
           >
             <Link href="/projects">
               <Folders className="size-5" />
-              プロジェクト
+              Projects
             </Link>
           </Button>
           <Button
@@ -74,7 +74,7 @@ export async function Sidebar() {
           >
             <Link href="/members">
               <Users className="size-5" />
-              メンバー
+              Members
             </Link>
           </Button>
           <Button
@@ -85,7 +85,7 @@ export async function Sidebar() {
           >
             <Link href="/chat">
               <BotMessageSquare className="size-5" />
-              チャット
+              Chat
             </Link>
           </Button>
           <Button
@@ -96,7 +96,7 @@ export async function Sidebar() {
           >
             <Link href="/settings">
               <Settings className="size-5" />
-              設定
+              Settings
             </Link>
           </Button>
         </div>
@@ -105,7 +105,7 @@ export async function Sidebar() {
       {/* Projects */}
       <div className="mt-4">
         <span className="text-xs font-medium tracking-wider text-muted-foreground">
-          プロジェクト
+          Projects
         </span>
 
         <div className="mt-4 flex flex-col gap-1 px-3">
@@ -118,7 +118,7 @@ export async function Sidebar() {
           >
             <Link href="/projects">
               <File className="size-5" />
-              冷凍機
+              Cutting machine
             </Link>
           </Button>
           <Button
@@ -129,7 +129,7 @@ export async function Sidebar() {
           >
             <Link href="/projects">
               <File className="size-5" />
-              そば切り機
+              Refrigerator
             </Link>
           </Button>
         </div>

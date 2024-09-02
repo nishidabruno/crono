@@ -43,7 +43,7 @@ export async function TeamSwitcher() {
                 <span className="trucate">{currentTeam.name}</span>
               </>
             ) : (
-              <span className="text-muted-foreground">チームを選択</span>
+              <span className="text-muted-foreground">Choose team</span>
             )}
             <ChevronsUpDown className="ml-auto size-4 text-muted-foreground" />
           </DropdownMenuTrigger>
@@ -56,7 +56,7 @@ export async function TeamSwitcher() {
           >
             {currentTeam && (
               <DropdownMenuGroup>
-                <DropdownMenuLabel>現在のチーム</DropdownMenuLabel>
+                <DropdownMenuLabel>Current team</DropdownMenuLabel>
 
                 <DropdownMenuItem asChild>
                   <Link href={`/team/${currentTeam.slug}`}>
@@ -73,7 +73,7 @@ export async function TeamSwitcher() {
             )}
             <DropdownMenuGroup>
               <DropdownMenuLabel>
-                {currentTeam ? '他のチーム' : 'チームリスト'}
+                {currentTeam ? 'Other' : 'Team list'}
               </DropdownMenuLabel>
 
               {teams.map((team) => (
@@ -93,7 +93,7 @@ export async function TeamSwitcher() {
             <DropdownMenuItem asChild>
               <Link href="/create-team">
                 <PlusCircle className="mr-2 size-4" />
-                新しいチーム
+                New team
               </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
