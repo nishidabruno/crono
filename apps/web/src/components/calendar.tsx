@@ -59,51 +59,66 @@ export function Calendar() {
               </div>
             </th>
 
-            <CalendarHeaderCell day="月 24" />
-            <CalendarHeaderCell day="火 25" />
-            <CalendarHeaderCell day="水 26" />
-            <CalendarHeaderCell day="木 27" />
-            <CalendarHeaderCell day="金 28" />
-            <CalendarHeaderCell day="土 29" />
-            <CalendarHeaderCell day="日 30" />
+            <CalendarHeaderCell day="Mon 24" />
+            <CalendarHeaderCell day="Tue 25" />
+            <CalendarHeaderCell day="Wed 26" />
+            <CalendarHeaderCell day="Thu 27" />
+            <CalendarHeaderCell day="Fri 28" />
+            <CalendarHeaderCell day="Sat 29" />
+            <CalendarHeaderCell day="Sun 30" />
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <td className="border p-2 text-center">8時</td>
+            <td className="border p-2 text-center">8AM</td>
             <CalendarDataCell>
-              <CalendarNote color="indigo" />
-              <CalendarNote color="emerald" />
+              <CalendarNote color="indigo" time="8AM" title="Sprint Planning" />
+              <CalendarNote
+                color="emerald"
+                time="8AM"
+                title="API Integration Review"
+              />
             </CalendarDataCell>
             <CalendarDataCell></CalendarDataCell>
             <CalendarDataCell>
-              <CalendarNote color="indigo" />
+              <CalendarNote
+                color="indigo"
+                time="8AM"
+                title="UI/UX Design Sync"
+              />
             </CalendarDataCell>
             <CalendarDataCell>
-              <CalendarNote />
+              <CalendarNote
+                time="8AM"
+                title="Performance Optimization Discussion "
+              />
             </CalendarDataCell>
             <CalendarDataCell>
-              <CalendarNote color="emerald" />
-              <CalendarNote />
+              <CalendarNote color="emerald" time="8AM" title="Team Standup" />
+              <CalendarNote time="8AM" title="Cross-Team Collaboration" />
             </CalendarDataCell>
             <CalendarDataCell></CalendarDataCell>
             <CalendarDataCell></CalendarDataCell>
           </tr>
           <tr>
-            <td className="border border-t-0 p-2 text-center">9時</td>
+            <td className="border border-t-0 p-2 text-center">9AM</td>
             <CalendarDataCell></CalendarDataCell>
             <CalendarDataCell>
-              <CalendarNote />
+              <CalendarNote time="9AM" title="QA Testing Session" />
             </CalendarDataCell>
             <CalendarDataCell>
-              <CalendarNote />
+              <CalendarNote time="9AM" title="Time Zone Handling Deep Dive" />
             </CalendarDataCell>
             <CalendarDataCell></CalendarDataCell>
             <CalendarDataCell></CalendarDataCell>
             <CalendarDataCell></CalendarDataCell>
             <CalendarDataCell>
-              <CalendarNote color="emerald" />
+              <CalendarNote
+                color="emerald"
+                time="9AM"
+                title="Release Planning"
+              />
             </CalendarDataCell>
           </tr>
         </tbody>

@@ -118,7 +118,7 @@ export async function Sidebar() {
           >
             <Link href="/projects">
               <File className="size-5" />
-              Cutting machine
+              TaskFlow
             </Link>
           </Button>
           <Button
@@ -129,7 +129,7 @@ export async function Sidebar() {
           >
             <Link href="/projects">
               <File className="size-5" />
-              Refrigerator
+              OrbitPlanner
             </Link>
           </Button>
         </div>

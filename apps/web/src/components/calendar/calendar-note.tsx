@@ -1,8 +1,14 @@
 interface CalendarNoteProps {
   color?: 'violet' | 'indigo' | 'emerald'
+  time: string
+  title: string
 }
 
-export function CalendarNote({ color = 'violet' }: CalendarNoteProps) {
+export function CalendarNote({
+  color = 'violet',
+  time,
+  title,
+}: CalendarNoteProps) {
   const colorVariantsTop = {
     violet:
       'border-b-violet-800 bg-violet-400 text-violet-800 shadow-violet-200',
@@ -22,12 +28,12 @@ export function CalendarNote({ color = 'violet' }: CalendarNoteProps) {
       <div
         className={`${colorVariantsTop[color]} rounded-t border-dashed px-3 py-1 text-sm shadow-inner`}
       >
-        <span>8時 - 9時</span>
+        <span>{time}</span>
       </div>
       <div
         className={`${colorVariantsBottom[color]} min-h-10 max-w-40 rounded-b p-2`}
       >
-        <span>顧客向けプレゼンテーション準備</span>
+        <span>{title}</span>
       </div>
     </div>
   )
