@@ -46,8 +46,7 @@ export async function getInvites(app: FastifyInstance) {
       async (request, reply) => {
         const { slug } = request.params
         const userId = await request.getCurrentUserId()
-        const { membership, team } =
-          await request.getUserMembership(slug)
+        const { membership, team } = await request.getUserMembership(slug)
 
         const { cannot } = getUserPermissions(userId, membership.role)
         if (cannot('get', 'Invite')) {

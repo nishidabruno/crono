@@ -37,8 +37,7 @@ export async function createProject(app: FastifyInstance) {
       async (request, reply) => {
         const { slug } = request.params
         const userId = await request.getCurrentUserId()
-        const { membership, team } =
-          await request.getUserMembership(slug)
+        const { membership, team } = await request.getUserMembership(slug)
 
         // Currently all users are allowed to create a project.
         const { cannot } = getUserPermissions(userId, membership.role)
