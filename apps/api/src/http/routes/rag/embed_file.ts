@@ -1,13 +1,10 @@
-import path from 'node:path'
-import { Worker } from 'node:worker_threads'
-
 import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf'
 import type { FastifyInstance } from 'fastify'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter'
 
-// import z from 'zod'
 import { auth } from '@/http/middlewares/auth'
+import { qdrantClientLangchain } from '@/lib/qdrant'
 
 import { BadRequestError } from '../_errors/bad-request-error'
 
@@ -21,14 +18,14 @@ export async function embedFile(app: FastifyInstance) {
         schema: {
           tags: ['rag'],
           summary: 'Embed a file.',
-          // security: [{ bearerAuth: [] }],
+          security: [{ bearerAuth: [] }],
           consumes: ['multipart/form-data'],
-          // response: {
-          //   201: z.null(),
-          // },
         },
       },
       async (request, reply) => {
+        // Authenticate
+        await request.getCurrentUserId()
+
         const file = await request.file()
         if (!file) {
           throw new BadRequestError('No file uploaded.')
@@ -51,7 +48,6 @@ export async function embedFile(app: FastifyInstance) {
           chunkOverlap: 20,
         })
         const docs = await textSplitter.splitDocuments(pages)
-        // const collection = await qdrantClientLangchain.addDocuments(docs)
 
         const maxBatchSize = 10 // Pages quantity by batch
         const batches = []
@@ -59,9 +55,8 @@ export async function embedFile(app: FastifyInstance) {
           batches.push(docs.slice(i, i + maxBatchSize))
         }
 
-        const worker = new Worker(path.resolve(__dirname, './worker.js'), {
-          workerData: { batches },
-        })
+        let completedBatches = 0
+        const totalBatches = batches.length
 
         // Set up streaming response
         reply.raw.writeHead(200, {
@@ -71,26 +66,21 @@ export async function embedFile(app: FastifyInstance) {
           Connection: 'keep-alive',
         })
 
-        worker.on('error', (error) => {
-          console.error('Worker error:', error)
-          reply.raw.write(
-            `data: ${JSON.stringify({ error: 'An error occurred' })}\n\n`,
-          )
-          reply.raw.end()
+        const promisses = batches.map(async (batch, index) => {
+          try {
+            await qdrantClientLangchain.addDocuments(batch)
+
+            completedBatches++
+            const progress = Math.round((completedBatches / totalBatches) * 100)
+            reply.raw.write(`${progress}`)
+          } catch (err) {
+            console.error(`Error in batch ${index + 1}: ${err}`)
+          }
         })
 
-        worker.on('message', (message) => {
-          console.log(message)
-          reply.raw.write(`${message}`)
-        })
+        await Promise.all(promisses)
 
-        worker.on('exit', () => {
-          reply.raw.end()
-        })
-
-        request.raw.on('exit', () => {
-          worker.terminate()
-        })
+        reply.raw.end()
       },
     )
 }
