@@ -8,7 +8,7 @@ export default async function Home() {
       <Sidebar />
 
       <main className="m-4 flex flex-col">
-        <h2 className="text-xl font-medium">Projects</h2>
+        <h2 className="text-2xl font-medium">Projects</h2>
         <div className="mt-4 flex gap-2">
           <ProjectCard
             title="ChronoSync"

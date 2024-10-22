@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server'
 
+// TODO: Fix safari bug where cookies does not change on switching teams.
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
@@ -16,8 +17,6 @@ export function middleware(request: NextRequest) {
     const [, , slug] = pathname.split('/')
 
     response.cookies.set('team', slug)
-  } else {
-    response.cookies.delete('team')
   }
 
   return response

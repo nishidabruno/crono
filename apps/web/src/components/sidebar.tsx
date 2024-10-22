@@ -10,7 +10,7 @@ import {
 // import { headers } from 'next/headers'
 import Link from 'next/link'
 
-import { ability } from '@/auth/auth'
+import { ability, getCurrentTeamSlug } from '@/auth/auth'
 
 import { TeamSwitcher } from './team-switcher'
 import { Button } from './ui/button'
@@ -18,6 +18,7 @@ import { UserSettings } from './user-settings'
 
 export async function Sidebar() {
   const permissions = await ability()
+  const currentTeam = getCurrentTeamSlug()
 
   // const pathname = headers().get('x-pathname')
   // console.log(pathname)
@@ -35,7 +36,7 @@ export async function Sidebar() {
         <div className="mt-4 flex flex-col gap-1 px-3">
           <Button
             size="sm"
-            variant="ghost"
+            variant="outline"
             className="flex justify-start gap-4 text-muted-foreground"
             asChild
           >
@@ -61,7 +62,7 @@ export async function Sidebar() {
             className="flex justify-start gap-4 text-muted-foreground"
             asChild
           >
-            <Link href="/projects">
+            <Link href={`/team/${currentTeam}/projects`}>
               <Folders className="size-5" />
               Projects
             </Link>
@@ -116,7 +117,7 @@ export async function Sidebar() {
             className="flex justify-start gap-4 text-muted-foreground"
             asChild
           >
-            <Link href="/projects">
+            <Link href={`/${currentTeam}/projects`}>
               <File className="size-5" />
               TaskFlow
             </Link>
